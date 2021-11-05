@@ -5,7 +5,7 @@
         <i
           class="checkBtn fas fa-check"
           v-bind:class="{ checkBtnCompleted: todoItem.completed }"
-          v-on:click="toggleChenkItem(todoItem, index)"
+          v-on:click="toggleTodo(todoItem, index)"
         ></i>
         <span v-bind:class="{ textCompleted: todoItem.completed }">
           {{ todoItem.item }}
@@ -23,13 +23,10 @@ export default {
   props: ["propsdata"],
   methods: {
     removeTodo: function (todoItem, index) {
-      localStorage.removeItem(todoItem.item);
-      this.todoItems.splice(index, 1);
+      this.$emit("removeItem", todoItem, index);
     },
-    toggleChenkItem: function (todoItem) {
-      todoItem.completed = !todoItem.completed;
-      localStorage.removeItem(todoItem.item);
-      localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
+    toggleTodo: function (todoItem, index) {
+      this.$emit("toggleItem", todoItem, index);
     },
   },
 };
