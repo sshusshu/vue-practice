@@ -12,8 +12,6 @@ const fetchJobsList = () => {
   return axios.get(`${config.baseUrl}jobs/1.json`);
 };
 const fetchAskList = () => {
-  console.log(axios.get(config.baseUrl));
-  console.log(axios.get(config.baseUrl).then((res) => console.log(res)));
   return axios.get(`${config.baseUrl}ask/1.json`);
 };
 
