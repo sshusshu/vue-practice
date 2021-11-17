@@ -1,0 +1,82 @@
+<template>
+  <div>
+    <ul class="news-list">
+      <li v-for="(item, index) in listItem" :key="index" class="post">
+        <!-- 포인트 영역 -->
+        <div class="points">
+          {{ item.points }}
+        </div>
+        <div>
+          <p class="news-title">
+            <a :href="item.url">{{ item.title }}</a>
+          </p>
+
+          <small class="link-text">
+            {{ item.time_ago }} by
+            <router-link v-bind:to="`/user/${item.user}`" class="link-text">
+              {{ item.user }}
+            </router-link>
+          </small>
+        </div>
+      </li>
+    </ul>
+  </div>
+</template>
+
+<script>
+export default {
+  computed: {
+    listItem() {
+      const name = this.$route.name;
+      if (name === "news") {
+        return this.$store.state.news;
+      } else if (name === "jobs") {
+        return this.$store.state.jobs;
+      } else if (name === "ask") {
+        return this.$store.state.ask;
+      }
+      return this.$store.state.news;
+    },
+  },
+  created() {
+    const name = this.$route.name;
+    let fetchName;
+
+    if (name === "news") {
+      fetchName = "FETCH_NEWS";
+    } else if (name === "jobs") {
+      fetchName = "FETCH_JOBS";
+    } else if (name === "ask") {
+      fetchName = "FETCH_ASK";
+    }
+    this.$store.dispatch(fetchName);
+  },
+};
+</script>
+
+<style scoped>
+.news-list {
+  margin: 0;
+  padding: 0;
+}
+.post {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #eee;
+}
+.points {
+  width: 80px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #42b883;
+}
+.news-title {
+  margin: 0;
+}
+.link-text {
+  color: #828282;
+}
+</style>

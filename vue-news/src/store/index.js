@@ -13,15 +13,18 @@ export const store = new Vuex.Store({
     item: {},
   },
   getters: {
-    fetchedAsk(state) {
-      return state.ask;
-    },
-    fetchedNews(state) {
-      return state.news;
-    },
-    fetchedJobs(state) {
-      return state.jobs;
-    },
+    // fetchedAsk(state) {
+    //   return state.ask;
+    // },
+    // fetchedNews(state) {
+    //   return state.news;
+    // },
+    // fetchedJobs(state) {
+    //   return state.jobs;
+    // },
+    // fetchedItem(state) {
+    //   return state.item;
+    // },
   },
   mutations,
   actions,
