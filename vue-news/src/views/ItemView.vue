@@ -3,10 +3,10 @@
     <section>
       <!-- 질문 상세 정보 -->
       <user-profile :info="fetchedItem">
-        <router-link slot="username" :to="`/user/${fetchedItem.user}`">
-          {{ fetchedItem.user }}
-        </router-link>
-        <template slot="time">{{ "Posted " + fetchedItem.time_ago }}</template>
+        <!-- <router-link slot="username" :to="`/user/${fetchedItem.user}`"> -->
+        {{ fetchedItem.user }}
+        <!-- </router-link> -->
+        <!-- <template slot="time">{{ "Posted " + fetchedItem.time_ago }}</template> -->
       </user-profile>
     </section>
     <section>
