@@ -19,4 +19,14 @@ body {
   margin: 0;
   padding: 0;
 }
+a{
+  color:#34495e;
+  text-decoration: none;
+}
+a:hover{
+  color:#42b883
+}
+a.router-link-exact-active{
+  text-decoration: underline;
+}
 </style>
