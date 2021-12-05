@@ -7,6 +7,9 @@ import createListView from "../views/CreateListView";
 import UserView from "../views/UserView.vue";
 import ItemView from "../views/ItemView.vue";
 
+import bus from "../utils/bus";
+import { store } from "../store/index";
+
 Vue.use(VueRouter);
 
 export const router = new VueRouter({
@@ -23,18 +26,45 @@ export const router = new VueRouter({
       //component: url과 연결된 컴포넌트
       // component: NewsView,
       component: createListView("NewsView"),
+      beforeEnter: (to, from, next) => {
+        // console.log("to", to);
+        // console.log("from", from);
+        // console.log("next", next);
+        bus.$emit("start:spinner");
+        store
+          .dispatch("FETCH_LIST", to.name)
+          .then(() => bus.$emit("end:spinner"))
+          .catch((err) => console.log(err));
+        next();
+      },
     },
     {
       path: "/jobs",
       name: "jobs",
       // component: JobsView,
       component: createListView("JobsView"),
+      beforeEnter: (to, from, next) => {
+        bus.$emit("start:spinner");
+        store
+          .dispatch("FETCH_LIST", to.name)
+          .then(() => bus.$emit("end:spinner"))
+          .catch((err) => console.log(err));
+        next();
+      },
     },
     {
       path: "/ask",
       name: "ask",
       // component: AskView,
       component: createListView("AskView"),
+      beforeEnter: (to, from, next) => {
+        bus.$emit("start:spinner");
+        store
+          .dispatch("FETCH_LIST", to.name)
+          .then(() => bus.$emit("end:spinner"))
+          .catch((err) => console.log(err));
+        next();
+      },
     },
     {
       path: "/user/:id",

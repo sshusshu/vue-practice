@@ -7,23 +7,50 @@ const config = {
 
 // 2.API함수들을 정리
 
-const fetchNewList = () => {
-  return axios.get(`${config.baseUrl}news/1.json`);
+const fetchNewList = async () => {
+  try {
+    return await axios.get(`${config.baseUrl}news/1.json`);
+  } catch (err) {
+    console.log(err);
+  }
 };
-const fetchJobList = () => {
-  return axios.get(`${config.baseUrl}jobs/1.json`);
+
+const fetchJobList = async () => {
+  try {
+    return await axios.get(`${config.baseUrl}jobs/1.json`);
+  } catch (err) {
+    console.log(err);
+  }
 };
-const fetchAskList = () => {
-  return axios.get(`${config.baseUrl}ask/1.json`);
+
+const fetchAskList = async () => {
+  try {
+    return await axios.get(`${config.baseUrl}ask/1.json`);
+  } catch (err) {
+    console.log(err);
+  }
 };
-const fetchUserInfo = (username) => {
-  return axios.get(`${config.baseUrl}user/${username}.json`);
+
+const fetchUserInfo = async (username) => {
+  try {
+    return await axios.get(`${config.baseUrl}user/${username}.json`);
+  } catch (err) {
+    console.log(err);
+  }
 };
-const fetchItemInfo = (id) => {
-  return axios.get(`${config.baseUrl}item/${id}.json`);
+const fetchItemInfo = async (id) => {
+  try {
+    return await axios.get(`${config.baseUrl}item/${id}.json`);
+  } catch (err) {
+    console.log(err);
+  }
 };
-const fetchList = (pageName) => {
-  return axios.get(`${config.baseUrl}${pageName}/1.json`);
+const fetchList = async (pageName) => {
+  try {
+    return await axios.get(`${config.baseUrl}${pageName}/1.json`);
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 export {

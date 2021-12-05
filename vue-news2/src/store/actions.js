@@ -7,37 +7,34 @@ import {
   fetchList,
 } from "../api/index.js";
 export default {
-  FETCH_NEWS({ commit }) {
-    fetchNewList()
-      .then(({ data }) => {
-        commit("SET_NEWS", data);
-        return data;
-      })
-      .catch((err) => console.log(err));
+  async FETCH_NEWS({ commit }) {
+    const response = await fetchNewList();
+    commit("SET_NEWS", response.data);
+    return response;
   },
-  FETCH_JOBS({ commit }) {
-    fetchJobList()
-      .then(({ data }) => commit("SET_JOBS", data))
-      .catch((err) => console.log(err));
+  async FETCH_JOBS({ commit }) {
+    const response = await fetchJobList();
+    commit("SET_JOBS", response.data);
+    return response;
   },
-  FETCH_ASK({ commit }) {
-    fetchAskList()
-      .then(({ data }) => commit("SET_ASK", data))
-      .catch((err) => console.log(err));
+  async FETCH_ASK({ commit }) {
+    const response = await fetchAskList();
+    commit("SET_ASK", response.data);
+    return response;
   },
-  FETCH_USER({ commit }, name) {
-    fetchUserInfo(name)
-      .then(({ data }) => commit("SET_USER", data))
-      .catch((err) => console.log(err));
+  async FETCH_USER({ commit }, name) {
+    const response = await fetchUserInfo(name);
+    commit("SET_USER", response.data);
+    return response;
   },
-  FETCH_ITEM({ commit }, id) {
-    fetchItemInfo(id)
-      .then(({ data }) => commit("SET_ITEM", data))
-      .catch((err) => console.log(err));
+  async FETCH_ITEM({ commit }, id) {
+    const response = await fetchItemInfo(id);
+    commit("SET_ITEM", response.data);
+    return response;
   },
-  FETCH_LIST({ commit }, pageName) {
-    fetchList(pageName)
-      .then(({ data }) => commit("SET_LIST", data))
-      .catch((err) => console.log(err));
+  async FETCH_LIST({ commit }, pageName) {
+    const response = await fetchList(pageName);
+    commit("SET_LIST", response.data);
+    return response;
   },
 };
